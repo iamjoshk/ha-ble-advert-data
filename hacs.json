@@ -1,0 +1,6 @@
+{
+  "name": "BLE advert data",
+  "domains": ["ble_advert_data"],
+  "render_readme": true,
+  "homeassistant": "2024.8.0"
+}

@@ -1,0 +1,12 @@
+{
+  "domain": "ble_advert_data",
+  "name": "BLE Advert Data",
+  "codeowners": ["@iamjoshk"],
+  "config_flow": true,
+  "dependencies": ["bluetooth"],
+  "documentation": "https://github.com/iamjoshk/ha-ble-advert-data",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "requirements": [],
+  "version": "0.1.0"
+}

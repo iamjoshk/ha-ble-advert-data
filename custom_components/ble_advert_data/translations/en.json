@@ -1,0 +1,26 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select a Bluetooth device",
+        "description": "Choose a Bluetooth device that Home Assistant can see to record its advertisement data.",
+        "data": {
+          "address": "Device"
+        }
+      }
+    },
+    "error": {
+      "no_devices": "No Bluetooth devices are currently visible. Make sure the device is advertising and try again."
+    },
+    "abort": {
+      "already_configured": "This device is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "advertisement": {
+        "name": "Advertisement data"
+      }
+    }
+  }
+}
