@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Select a Bluetooth device",
-        "description": "Choose a Bluetooth device that Home Assistant can see to record its advertisement data.",
+        "description": "Choose a Bluetooth device that Home Assistant can see to record its advertisement data. You can type to filter or paste a MAC address.",
         "data": {
           "address": "Device"
         }
@@ -20,6 +20,38 @@
     "sensor": {
       "advertisement": {
         "name": "Advertisement data"
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "menu_options": {
+          "add_rule": "Add a parsing rule",
+          "remove_rule": "Remove a parsing rule"
+        }
+      },
+      "add_rule": {
+        "title": "Add a parsing rule",
+        "description": "Define how to read bytes from the advertisement. The source key is required for manufacturer data (decimal or 0x hex) and service data (UUID).",
+        "data": {
+          "name": "Sensor name",
+          "source_type": "Source type",
+          "source_key": "Source key",
+          "offset": "Byte offset",
+          "length": "Byte length",
+          "endian": "Byte order",
+          "signed": "Signed",
+          "scale": "Scale",
+          "unit": "Unit of measurement"
+        }
+      },
+      "remove_rule": {
+        "title": "Remove a parsing rule",
+        "description": "Choose a parsing rule to remove.",
+        "data": {
+          "id": "Rule"
+        }
       }
     }
   }

@@ -28,8 +28,16 @@ async def async_setup_entry(
 ) -> bool:
     """Set up BLE advert data from a config entry."""
     entry.runtime_data = BleAdvertDataRuntime(address=entry.data[CONF_ADDRESS])
+    entry.async_on_unload(entry.add_update_listener(_async_update_listener))
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
+
+
+async def _async_update_listener(
+    hass: HomeAssistant, entry: BleAdvertDataConfigEntry
+) -> None:
+    """Handle options updates."""
+    await hass.config_entries.async_reload(entry.entry_id)
 
 
 async def async_unload_entry(
