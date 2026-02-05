@@ -150,7 +150,7 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
                 ): str,
                 vol.Required(
                     CONF_SOURCE_TYPE,
-                    default=rule.get(CONF_SOURCE_TYPE, SOURCE_MANUFACTURER),
+                    default=(rule.get(CONF_SOURCE_TYPE) if rule else SOURCE_MANUFACTURER),
                 ): selector.SelectSelector(
                     selector.SelectSelectorConfig(
                         options=[
@@ -161,16 +161,16 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
                     )
                 ),
                 vol.Optional(
-                    CONF_SOURCE_KEY, default=rule.get(CONF_SOURCE_KEY) or ""
+                    CONF_SOURCE_KEY, default=rule.get(CONF_SOURCE_KEY) or "" if rule else ""
                 ): str,
                 vol.Required(
-                    CONF_OFFSET, default=rule.get(CONF_OFFSET, 0)
+                    CONF_OFFSET, default=rule.get(CONF_OFFSET, 0) if rule else 0
                 ): vol.All(int, vol.Range(min=0)),
                 vol.Required(
-                    CONF_LENGTH, default=rule.get(CONF_LENGTH, 1)
+                    CONF_LENGTH, default=rule.get(CONF_LENGTH, 1) if rule else 1
                 ): vol.All(int, vol.Range(min=1)),
                 vol.Required(
-                    CONF_ENDIAN, default=rule.get(CONF_ENDIAN, ENDIAN_LITTLE)
+                    CONF_ENDIAN, default=(rule.get(CONF_ENDIAN) if rule else ENDIAN_LITTLE)
                 ): selector.SelectSelector(
                     selector.SelectSelectorConfig(
                         options=[
@@ -181,12 +181,12 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
                     )
                 ),
                 vol.Required(
-                    CONF_SIGNED, default=rule.get(CONF_SIGNED, False)
+                    CONF_SIGNED, default=rule.get(CONF_SIGNED, False) if rule else False
                 ): bool,
                 vol.Required(
-                    CONF_SCALE, default=rule.get(CONF_SCALE, 1.0)
+                    CONF_SCALE, default=rule.get(CONF_SCALE, 1.0) if rule else 1.0
                 ): vol.Coerce(float),
-                vol.Optional(CONF_UNIT, default=rule.get(CONF_UNIT) or ""): str,
+                vol.Optional(CONF_UNIT, default=rule.get(CONF_UNIT) or "" if rule else ""): str,
             }
         )
 
