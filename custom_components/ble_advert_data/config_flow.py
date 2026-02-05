@@ -11,7 +11,7 @@ import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.components import bluetooth
 from homeassistant.const import CONF_ADDRESS
-from homeassistant.helpers import selector
+from homeassistant.helpers import entity_registry, selector
 from homeassistant.helpers.device_registry import format_mac
 
 from .const import (
@@ -127,9 +127,68 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
         """Handle the options flow start."""
         options = ["add_rule"]
         if self._rules:
-            options.append("remove_rule")
+            options.extend(["edit_rule", "remove_rule"])
 
         return self.async_show_menu(step_id="init", menu_options=options)
+
+    def _build_rule_schema(self, rule: dict[str, Any] | None = None) -> vol.Schema:
+        """Build the schema for a rule form."""
+        source_options = {
+            SOURCE_MANUFACTURER: "Manufacturer data",
+            SOURCE_SERVICE: "Service data",
+            SOURCE_RAW: "Raw data",
+        }
+        endian_options = {
+            ENDIAN_BIG: "Big endian",
+            ENDIAN_LITTLE: "Little endian",
+        }
+
+        return vol.Schema(
+            {
+                vol.Required(
+                    CONF_RULE_NAME, default=rule.get(CONF_RULE_NAME) if rule else None
+                ): str,
+                vol.Required(
+                    CONF_SOURCE_TYPE,
+                    default=rule.get(CONF_SOURCE_TYPE, SOURCE_MANUFACTURER),
+                ): selector.SelectSelector(
+                    selector.SelectSelectorConfig(
+                        options=[
+                            selector.SelectOptionDict(value=key, label=value)
+                            for key, value in source_options.items()
+                        ],
+                        mode=selector.SelectSelectorMode.DROPDOWN,
+                    )
+                ),
+                vol.Optional(
+                    CONF_SOURCE_KEY, default=rule.get(CONF_SOURCE_KEY) or ""
+                ): str,
+                vol.Required(
+                    CONF_OFFSET, default=rule.get(CONF_OFFSET, 0)
+                ): vol.All(int, vol.Range(min=0)),
+                vol.Required(
+                    CONF_LENGTH, default=rule.get(CONF_LENGTH, 1)
+                ): vol.All(int, vol.Range(min=1)),
+                vol.Required(
+                    CONF_ENDIAN, default=rule.get(CONF_ENDIAN, ENDIAN_LITTLE)
+                ): selector.SelectSelector(
+                    selector.SelectSelectorConfig(
+                        options=[
+                            selector.SelectOptionDict(value=key, label=value)
+                            for key, value in endian_options.items()
+                        ],
+                        mode=selector.SelectSelectorMode.DROPDOWN,
+                    )
+                ),
+                vol.Required(
+                    CONF_SIGNED, default=rule.get(CONF_SIGNED, False)
+                ): bool,
+                vol.Required(
+                    CONF_SCALE, default=rule.get(CONF_SCALE, 1.0)
+                ): vol.Coerce(float),
+                vol.Optional(CONF_UNIT, default=rule.get(CONF_UNIT) or ""): str,
+            }
+        )
 
     async def async_step_add_rule(
         self, user_input: dict[str, str] | None = None
@@ -151,47 +210,64 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
             rules = [*self._rules, rule]
             return self.async_create_entry(title="", data={CONF_RULES: rules})
 
-        source_options = {
-            SOURCE_MANUFACTURER: "Manufacturer data",
-            SOURCE_SERVICE: "Service data",
-            SOURCE_RAW: "Raw data",
-        }
-        endian_options = {
-            ENDIAN_BIG: "Big endian",
-            ENDIAN_LITTLE: "Little endian",
-        }
-
-        schema = vol.Schema(
-            {
-                vol.Required(CONF_RULE_NAME): str,
-                vol.Required(CONF_SOURCE_TYPE, default=SOURCE_MANUFACTURER): selector.SelectSelector(
-                    selector.SelectSelectorConfig(
-                        options=[
-                            selector.SelectOptionDict(value=key, label=value)
-                            for key, value in source_options.items()
-                        ],
-                        mode=selector.SelectSelectorMode.DROPDOWN,
-                    )
-                ),
-                vol.Optional(CONF_SOURCE_KEY, default=""): str,
-                vol.Required(CONF_OFFSET, default=0): vol.All(int, vol.Range(min=0)),
-                vol.Required(CONF_LENGTH, default=1): vol.All(int, vol.Range(min=1)),
-                vol.Required(CONF_ENDIAN, default=ENDIAN_LITTLE): selector.SelectSelector(
-                    selector.SelectSelectorConfig(
-                        options=[
-                            selector.SelectOptionDict(value=key, label=value)
-                            for key, value in endian_options.items()
-                        ],
-                        mode=selector.SelectSelectorMode.DROPDOWN,
-                    )
-                ),
-                vol.Required(CONF_SIGNED, default=False): bool,
-                vol.Required(CONF_SCALE, default=1.0): vol.Coerce(float),
-                vol.Optional(CONF_UNIT, default=""): str,
-            }
+        return self.async_show_form(
+            step_id="add_rule", data_schema=self._build_rule_schema()
         )
 
-        return self.async_show_form(step_id="add_rule", data_schema=schema)
+    async def async_step_edit_rule(
+        self, user_input: dict[str, str] | None = None
+    ) -> config_entries.FlowResult:
+        """Edit a parsing rule."""
+        if not self._rules:
+            return await self.async_step_init()
+
+        # Check if we're selecting which rule to edit or editing the selected rule
+        if CONF_RULE_ID not in self.context:
+            # First step: select which rule to edit
+            if user_input is not None:
+                # Store the selected rule id and show the edit form
+                self.context[CONF_RULE_ID] = user_input[CONF_RULE_ID]
+                # Re-call this step to go to the edit form
+                return await self.async_step_edit_rule()
+
+            options = {
+                rule[CONF_RULE_ID]: rule.get(CONF_RULE_NAME, rule[CONF_RULE_ID])
+                for rule in self._rules
+                if rule.get(CONF_RULE_ID)
+            }
+            schema = vol.Schema({vol.Required(CONF_RULE_ID): vol.In(options)})
+            return self.async_show_form(step_id="edit_rule", data_schema=schema)
+
+        # Second step: edit the selected rule
+        rule_id = self.context[CONF_RULE_ID]
+        rule = next(
+            (r for r in self._rules if r.get(CONF_RULE_ID) == rule_id), None
+        )
+        if rule is None:
+            return await self.async_step_init()
+
+        if user_input is not None:
+            updated_rule = {
+                CONF_RULE_ID: rule_id,
+                CONF_RULE_NAME: user_input[CONF_RULE_NAME],
+                CONF_SOURCE_TYPE: user_input[CONF_SOURCE_TYPE],
+                CONF_SOURCE_KEY: user_input[CONF_SOURCE_KEY] or None,
+                CONF_OFFSET: user_input[CONF_OFFSET],
+                CONF_LENGTH: user_input[CONF_LENGTH],
+                CONF_ENDIAN: user_input[CONF_ENDIAN],
+                CONF_SIGNED: user_input[CONF_SIGNED],
+                CONF_SCALE: user_input[CONF_SCALE],
+                CONF_UNIT: user_input[CONF_UNIT] or None,
+            }
+            rules = [
+                updated_rule if r.get(CONF_RULE_ID) == rule_id else r
+                for r in self._rules
+            ]
+            return self.async_create_entry(title="", data={CONF_RULES: rules})
+
+        return self.async_show_form(
+            step_id="edit_rule", data_schema=self._build_rule_schema(rule)
+        )
 
     async def async_step_remove_rule(
         self, user_input: dict[str, str] | None = None
@@ -203,6 +279,10 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
         if user_input is not None:
             rule_id = user_input[CONF_RULE_ID]
             rules = [rule for rule in self._rules if rule.get(CONF_RULE_ID) != rule_id]
+            
+            # Clean up the associated entity
+            await self._cleanup_rule_entity(rule_id)
+            
             return self.async_create_entry(title="", data={CONF_RULES: rules})
 
         options = {
@@ -212,6 +292,21 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
         }
         schema = vol.Schema({vol.Required(CONF_RULE_ID): vol.In(options)})
         return self.async_show_form(step_id="remove_rule", data_schema=schema)
+
+    async def _cleanup_rule_entity(self, rule_id: str) -> None:
+        """Clean up the entity created by a rule."""
+        registry = entity_registry.async_get(self.hass)
+        address = self._entry.data[CONF_ADDRESS]
+        formatted_address = format_mac(address)
+        
+        # Look up entity by unique_id
+        entries = [
+            entry
+            for entry in registry.entities.values()
+            if entry.unique_id == f"{formatted_address}_rule_{rule_id}"
+        ]
+        for entry in entries:
+            registry.async_remove(entry.entity_id)
 
     @property
     def _rules(self) -> list[dict[str, Any]]:

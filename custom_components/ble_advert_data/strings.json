@@ -28,6 +28,7 @@
       "init": {
         "menu_options": {
           "add_rule": "Add a parsing rule",
+          "edit_rule": "Edit a parsing rule",
           "remove_rule": "Remove a parsing rule"
         }
       },
@@ -35,6 +36,22 @@
         "title": "Add a parsing rule",
         "description": "Define how to read bytes from the advertisement. The source key is required for manufacturer data (decimal or 0x hex) and service data (UUID).",
         "data": {
+          "name": "Sensor name",
+          "source_type": "Source type",
+          "source_key": "Source key",
+          "offset": "Byte offset",
+          "length": "Byte length",
+          "endian": "Byte order",
+          "signed": "Signed",
+          "scale": "Scale",
+          "unit": "Unit of measurement"
+        }
+      },
+      "edit_rule": {
+        "title": "Edit a parsing rule",
+        "description": "Define how to read bytes from the advertisement. The source key is required for manufacturer data (decimal or 0x hex) and service data (UUID).",
+        "data": {
+          "id": "Rule",
           "name": "Sensor name",
           "source_type": "Source type",
           "source_key": "Source key",
