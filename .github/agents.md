@@ -1,6 +1,10 @@
+## Important information
+- This is a virtual workspace
+- This repository should be compliant with a HACS install: https://hacs.xyz/docs/publish/integration/
+
 # GitHub Copilot & Claude Code Instructions
 
-This repository contains the core of Home Assistant, a Python 3 based home automation application.
+This repository contains a Home Assistant custom integration.
 
 ## Code Review Guidelines
 
