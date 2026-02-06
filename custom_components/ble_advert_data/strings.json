@@ -21,6 +21,11 @@
       "advertisement": {
         "name": "Advertisement data"
       }
+    },
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Connected"
+      }
     }
   },
   "options": {

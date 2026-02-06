@@ -68,7 +68,6 @@ class BleAdvertDataBaseSensor(SensorEntity):
         """Initialize the BLE advertisement sensor."""
         self._address = entry.data[CONF_ADDRESS]
         formatted_address = format_mac(self._address)
-        self._attr_available = False
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, formatted_address)},
             name=entry.title,
@@ -123,7 +122,6 @@ class BleAdvertDataSensor(BleAdvertDataBaseSensor):
         """Update sensor attributes from service info."""
         self._attr_native_value = service_info.rssi
         self._attr_extra_state_attributes = self._build_attributes(service_info)
-        self._attr_available = True
 
     def _build_attributes(
         self, service_info: BluetoothServiceInfoBleak | None
@@ -204,7 +202,6 @@ class BleAdvertDataByteSensor(BleAdvertDataBaseSensor):
         value, raw_hex = _parse_rule_value(service_info, self._rule)
         self._attr_native_value = value
         self._attr_extra_state_attributes = self._build_attributes(service_info, raw_hex)
-        self._attr_available = True
 
     def _build_attributes(
         self,
