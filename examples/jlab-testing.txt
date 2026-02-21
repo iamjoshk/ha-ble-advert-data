@@ -1,0 +1,206 @@
+L in, R out, disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 008901020000000000000000e5
+
+L in, R out, reconnected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 008901020000000000000000e6
+
+L in, R out, disconnected from device again
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 008f01020000000000000000eb
+
+Removed L from case, R out of case, connected automatically to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 009201020000000000000000ee
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 009101020000000000000000ef
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 009201020000000000000000ee
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00920102000000000000000053
+
+L out, R out, disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00950102000000000000000055
+
+L out, R out, reconnected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00950102000000000000000056
+
+L out, R out, disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00980102000000000000000058
+
+L out, R out, reconnected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00980102000000000000000059
+
+L returned to case, R out, reconnected automatically to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 009801020000000000000000f5
+
+L in case, R out, disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 009e01020000000000000000fa
+
+L in case, R out, reconnected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 009e01020000000000000000fb
+
+L removed from case, R still out, still connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 009a01020000000000000000f8
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 009e01020000000000000000fb
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 009a01020000000000000000f8
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 009e01020000000000000000fb
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 009a01020000000000000000f8
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 009e01020000000000000000fb
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 009a01020000000000000000f8
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 009e01020000000000000000fb
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 009a01020000000000000000f8
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 009e01020000000000000000fb
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 009e010200000000000000005f
+
+L out, R out, disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00a10102000000000000000061
+
+L out, R returned to case, still disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6400 00a301020000000000000000ff
+
+L out, R returned to case, reconnected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6400 00a30102000000000000000000
+
+L out, R removed from case, still connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00a20102000000000000000000
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6400 00a30102000000000000000000
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00a20102000000000000000000
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6400 00a30102000000000000000000
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00a20102000000000000000000
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00a30102000000000000000064
+
+L out, R out, disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00a60102000000000000000066
+
+L out, R out, reconnected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00a60102000000000000000067
+
+L out, R out, disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00a90102000000000000000069
+
+L out, R returned to case, still disconnected from device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6400 00ab0102000000000000000007
+
+L returned to case, R in case, still disconnected from device (BT turned off on device)
+no advertisement
+
+L still in case, R removed from case, still disconnected from device (BT turned off on device)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00aa0102000000000000000008 (maybe stale advert from previous state?)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00aa0102000000000000000008 (maybe stale advert from previous state?)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00ab0102000000000000000007 
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00ac0102000000000000000008
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00ad0102000000000000000009
+
+L removed from case, R out, still disconnected from device (BT turned off on device)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00ae010200000000000000006e
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00af010200000000000000006f
+
+L returned to case, R out, still disconnected from device (BT turned off on device)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00b1010200000000000000000d
+
+L in case, R returned to case, still disconnected from device (BT turned off on device)
+no advertisement
+
+L in case, R removed from case, still disconnceted from device (BT turned off on device)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00b30102000000000000000011
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00b40102000000000000000010
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00b50102000000000000000011
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00b60102000000000000000012
+
+L removed from case, R still out, still disconnected from device (BT turned off on device)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00b10102000000000000000071
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00b20102000000000000000072
+
+L out, R out, reconnected to device (BT turned back on on device)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00b20102000000000000000073
+
+L returned to case, R out, still connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 00 0064 00b2010200000000000000000d
+
+L in case, R returned to case, auto disconnect from device
+no advertisement
+
+L in case, R removed, reconnected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00b50102000000000000000013
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00b60102000000000000000012
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 00b60102000000000000000013
+
+L removed from case, R still out, still connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00b60102000000000000000077
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00b60102000000000000000077
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00b60102000000000000000077
+
+L returned to case, R still out, stil connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 00b60102000000000000000013
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 00b60102000000000000000013
+
+L in case, R returned to case, auto disconnect from device
+no advertisement
+
+L removed from case, R in, auto connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00b70102000000000000000015
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00b70102000000000000000015
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6400 00b80102000000000000000014
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6400 00b80102000000000000000015
+
+L out, R removed from case, connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6400 00b80102000000000000000015
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00b80102000000000000000016
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6400 00b80102000000000000000015
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00b80102000000000000000016
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00b80102000000000000000079
+
+L out, R returned to case, still connected to device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6400 00b80102000000000000000015
+
+L returned to case, R in case, auto disconnect from device
+no advertisement
+
+L in case, R removed from case, auto connected to device (case charging, does not report status)
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00bb0102000000000000000019
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00bc0102000000000000000018
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 0064 00bc0102000000000000000019
+
+L in case, R returned to case, auto disconnected to device (case charging, does not report status)
+no advertisement
+
+
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00be010200000000000000001c
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00bf010200000000000000001b
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00c0010200000000000000001c
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00c1010200000000000000001d
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00c50102000000000000000021
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00c90102000000000000000025
+
+
+L removed
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00d3010200000000000000002f
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00d40102000000000000000094
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 0064 00d3010200000000000000002f
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00d40102000000000000000094
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00d50102000000000000000095
+
+
+paired to new device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00d60102000000000000000097
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00d60102000000000000000097
+
+Removed pairing to new device
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00d90102000000000000000099
+
+L removed from case, R removed from case, tried to connected, failed, then manually connected through device BT settings
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00da0102000000000000000038
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00dc010200000000000000003a
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00da0102000000000000000038
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00dc010200000000000000003a
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00da0102000000000000000038
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 6400 00dc010200000000000000003a
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 03 0064 00da0102000000000000000038
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00dd010200000000000000009d
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00dd010200000000000000009e
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00dd010200000000000000009e
+
+L out, R out, still connected for 9m 31s
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00dd010200000000000000009e
+
+
+L out, R out, disconnected then reconnected
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 01 6464 00e001020000000000000000a0
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00e001020000000000000000a1
+Manufacturer data for 9F:DA:08:0F:F8:A0 (ID 1494): 02000600229fda08240c3e 02 6464 00e001020000000000000000a1
+
