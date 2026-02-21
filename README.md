@@ -29,13 +29,21 @@ The sensor exposes the advertisement data as attributes, including:
 Create sensors from manufacturer data by adding parsing rules in the device's options. Once a device has been added, click the gear for that device and select Add a parsing rule.
 
 `Sensor name`: provide a name for your sensor
+
 `Source type`: select Manufacturer, Source, or Raw data
+
 `Source key`: enter the source key
+
 `Byte offset`: tell the parser where to start looking for the data
+
 `Byte length`: tell the parser how many bytes it should include when parsing
+
 `Byte order`: select Big endian or Little endian. Does not matter when byte length = 1.
+
 `Signed`: check if signed
+
 `Scale`: set the scale for the data (default 1)
+
 `Unit of measurement`: set the unit of measurement (example, `%` for battery percentage)
 
 ## Service UUID Fingerprinting
