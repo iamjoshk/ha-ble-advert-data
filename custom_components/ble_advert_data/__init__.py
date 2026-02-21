@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ADDRESS, Platform
@@ -18,6 +18,9 @@ class BleAdvertDataRuntime:
     """Runtime data for the BLE advert data integration."""
 
     address: str
+    latest_fingerprint_mac: str | None = None
+    latest_fingerprint_time: float | None = None
+    gatt_battery_level: int | None = None
 
 
 type BleAdvertDataConfigEntry = ConfigEntry[BleAdvertDataRuntime]

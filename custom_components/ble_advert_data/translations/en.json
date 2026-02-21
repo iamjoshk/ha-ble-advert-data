@@ -20,6 +20,12 @@
     "sensor": {
       "advertisement": {
         "name": "Advertisement data"
+      },
+      "latest_mac": {
+        "name": "Latest MAC address"
+      },
+      "gatt_battery": {
+        "name": "Battery"
       }
     },
     "binary_sensor": {
@@ -32,9 +38,27 @@
     "step": {
       "init": {
         "menu_options": {
+          "gatt_settings": "GATT settings",
+          "service_data_fingerprint": "Service data fingerprinting",
           "add_rule": "Add a parsing rule",
           "edit_rule": "Edit a parsing rule",
           "remove_rule": "Remove a parsing rule"
+        }
+      },
+      "gatt_settings": {
+        "title": "GATT settings",
+        "description": "Enable GATT fetching to read battery levels from Bluetooth devices that expose the standard battery service (UUID 180F).",
+        "data": {
+          "enable_gatt_fetch": "Enable GATT fetching"
+        }
+      },
+      "service_data_fingerprint": {
+        "title": "Service data fingerprinting",
+        "description": "For devices with randomized MAC addresses, match on service data instead. The fingerprint is matched as a prefix of the service data. Leave empty to disable.",
+        "data": {
+          "enable_fingerprint": "Enable fingerprint matching",
+          "service_uuid": "Service UUID",
+          "fingerprint": "Hex fingerprint (e.g., 0050d281)"
         }
       },
       "add_rule": {
@@ -75,6 +99,9 @@
           "id": "Rule"
         }
       }
+    },
+    "error": {
+      "unknown_error": "An unexpected error occurred"
     }
   }
 }

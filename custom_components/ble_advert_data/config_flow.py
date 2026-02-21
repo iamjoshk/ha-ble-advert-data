@@ -125,7 +125,7 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
         self, user_input: dict[str, str] | None = None
     ) -> config_entries.FlowResult:
         """Handle the options flow start."""
-        options = ["add_rule"]
+        options = ["gatt_settings", "service_data_fingerprint", "add_rule"]
         if self._rules:
             options.extend(["edit_rule", "remove_rule"])
 
@@ -208,10 +208,84 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
                 CONF_UNIT: user_input[CONF_UNIT] or None,
             }
             rules = [*self._rules, rule]
-            return self.async_create_entry(title="", data={CONF_RULES: rules})
+            data = {**self._entry.options, CONF_RULES: rules}
+            return self.async_create_entry(title="", data=data)
 
         return self.async_show_form(
             step_id="add_rule", data_schema=self._build_rule_schema()
+        )
+
+    async def async_step_gatt_settings(
+        self, user_input: dict[str, str] | None = None
+    ) -> config_entries.FlowResult:
+        """Configure GATT settings."""
+        if user_input is not None:
+            # Merge with existing options to preserve other settings
+            data = {**self._entry.options, **user_input}
+            return self.async_create_entry(title="", data=data)
+
+        return self.async_show_form(
+            step_id="gatt_settings",
+            data_schema=vol.Schema(
+                {
+                    vol.Optional(
+                        "enable_gatt_fetch",
+                        default=self._entry.options.get("enable_gatt_fetch", False),
+                    ): bool,
+                }
+            ),
+            description_placeholders={
+                "info": "Enable GATT fetching to read battery levels from Bluetooth devices that expose the standard battery service"
+            },
+        )
+
+    async def async_step_service_data_fingerprint(
+        self, user_input: dict[str, str] | None = None
+    ) -> config_entries.FlowResult:
+        """Configure service data fingerprinting for randomized MAC devices."""
+        if user_input is not None:
+            data: dict[str, Any] = {**self._entry.options}
+            if user_input.get("enable_fingerprint"):
+                service_uuid = user_input.get("service_uuid", "").strip().lower()
+                fingerprint = user_input.get("fingerprint", "").strip().lower()
+                
+                if service_uuid and fingerprint:
+                    data["service_data_fingerprint"] = {service_uuid: fingerprint}
+                else:
+                    data["service_data_fingerprint"] = None
+            else:
+                data["service_data_fingerprint"] = None
+            
+            return self.async_create_entry(title="", data=data)
+
+        current_fingerprint = self._entry.options.get("service_data_fingerprint") or {}
+        is_enabled = bool(current_fingerprint)
+        current_uuid = next(iter(current_fingerprint.keys())) if current_fingerprint else ""
+        current_fp = next(iter(current_fingerprint.values())) if current_fingerprint else ""
+
+        return self.async_show_form(
+            step_id="service_data_fingerprint",
+            data_schema=vol.Schema(
+                {
+                    vol.Optional(
+                        "enable_fingerprint",
+                        default=is_enabled,
+                    ): bool,
+                    vol.Optional(
+                        "service_uuid",
+                        default=current_uuid,
+                    ): str,
+                    vol.Optional(
+                        "fingerprint",
+                        default=current_fp,
+                    ): str,
+                }
+            ),
+            description_placeholders={
+                "info": "For devices with randomized MAC addresses, specify a service data UUID and hex fingerprint to match on. "
+                "The fingerprint is matched as a prefix (first N bytes of the service data in hex). "
+                "Example: UUID=0000fe2c-0000-1000-8000-00805f9b34fb, Fingerprint=0050d281"
+            },
         )
 
     async def async_step_edit_rule(
@@ -263,7 +337,8 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
                 updated_rule if r.get(CONF_RULE_ID) == rule_id else r
                 for r in self._rules
             ]
-            return self.async_create_entry(title="", data={CONF_RULES: rules})
+            data = {**self._entry.options, CONF_RULES: rules}
+            return self.async_create_entry(title="", data=data)
 
         return self.async_show_form(
             step_id="edit_rule", data_schema=self._build_rule_schema(rule)
@@ -283,7 +358,8 @@ class BleAdvertDataOptionsFlow(config_entries.OptionsFlow):
             # Clean up the associated entity
             await self._cleanup_rule_entity(rule_id)
             
-            return self.async_create_entry(title="", data={CONF_RULES: rules})
+            data = {**self._entry.options, CONF_RULES: rules}
+            return self.async_create_entry(title="", data=data)
 
         options = {
             rule[CONF_RULE_ID]: rule.get(CONF_RULE_NAME, rule[CONF_RULE_ID])
