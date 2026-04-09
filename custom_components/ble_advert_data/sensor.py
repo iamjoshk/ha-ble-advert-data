@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from homeassistant.core import Event, HomeAssistant, callback
 from typing import Any
 import asyncio
 import time
@@ -538,20 +539,26 @@ class BleAdvertDataGattBatterySensor(BleAdvertDataBaseSensor):
     async def async_added_to_hass(self) -> None:
         """Register for Bluetooth updates and listen for GATT events."""
         await super().async_added_to_hass()
-        
-        def _handle_gatt_event(event):
+
+        @callback
+        def _handle_gatt_event(event: Event[Any]) -> None:
+            """Handle GATT battery update events on the event loop."""
             data = event.data
             if data.get("address") != self._address:
                 return
+
             level = data.get("battery_level")
-            if level is not None:
-                self._attr_native_value = level
-                self._last_battery_level = level
-                self.async_write_ha_state()
+            if level is None:
+                return
+
+            self._attr_native_value = level
+            self._last_battery_level = level
+            self.async_write_ha_state()
 
         self.async_on_remove(
             self.hass.bus.async_listen(f"{DOMAIN}_gatt_battery", _handle_gatt_event)
         )
+
 
 def _extract_battery_from_manufacturer_data(
     service_info: BluetoothServiceInfoBleak, address: str
